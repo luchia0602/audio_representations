@@ -10,10 +10,26 @@ stages:
       nfiles: 5930
     - path: pipeline/parse_corpus.py
       hash: md5
-      md5: c2ab2b21d52494d8630217ee4ded7225
-      size: 4868
+      md5: 1e7ae9c6bedc8368bc271511bfcbb518
+      size: 3389
     outs:
     - path: data/processed/corpus_parsed.csv
       hash: md5
       md5: 4a89859bbbb6590502650bf6d3721e27
       size: 3024823
+  extract_acoustics:
+    cmd: python pipeline/extract_acoustics.py
+    deps:
+    - path: data/processed/corpus_parsed.csv
+      hash: md5
+      md5: 4a89859bbbb6590502650bf6d3721e27
+      size: 3024823
+    - path: pipeline/extract_acoustics.py
+      hash: md5
+      md5: feecedd458b016c422535524453ee7ad
+      size: 2742
+    outs:
+    - path: data/processed/features_acoustic.csv
+      hash: md5
+      md5: 0937f0fa9d7b83f87bb0aa8acae400e6
+      size: 4842432
