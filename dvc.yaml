@@ -1,0 +1,8 @@
+stages:
+  parse_corpus:
+    cmd: python pipeline/parse_corpus.py
+    deps:
+      - pipeline/parse_corpus.py
+      - data/2
+    outs:
+      - data/processed/corpus_parsed.csv

@@ -1,0 +1,19 @@
+schema: '2.0'
+stages:
+  parse_corpus:
+    cmd: python pipeline/parse_corpus.py
+    deps:
+    - path: data/2
+      hash: md5
+      md5: 36144d653156032b457d19e9c8c9ab3e.dir
+      size: 738309514
+      nfiles: 5930
+    - path: pipeline/parse_corpus.py
+      hash: md5
+      md5: 8f7b5f8c2580d6b61b5311c9df45d28a
+      size: 3293
+    outs:
+    - path: data/processed/corpus_parsed.csv
+      hash: md5
+      md5: 89d32eb27001f6ff56e59ce15f215043
+      size: 1191556
