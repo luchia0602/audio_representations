@@ -10,10 +10,10 @@ stages:
       nfiles: 5930
     - path: pipeline/parse_corpus.py
       hash: md5
-      md5: 8f7b5f8c2580d6b61b5311c9df45d28a
-      size: 3293
+      md5: c2ab2b21d52494d8630217ee4ded7225
+      size: 4868
     outs:
     - path: data/processed/corpus_parsed.csv
       hash: md5
-      md5: 89d32eb27001f6ff56e59ce15f215043
-      size: 1191556
+      md5: 4a89859bbbb6590502650bf6d3721e27
+      size: 3024823
