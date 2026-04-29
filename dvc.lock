@@ -26,10 +26,42 @@ stages:
       size: 3024823
     - path: pipeline/extract_acoustics.py
       hash: md5
-      md5: feecedd458b016c422535524453ee7ad
-      size: 2742
+      md5: 210e2107886f11dd4b36d8f339c8c92e
+      size: 2437
     outs:
     - path: data/processed/features_acoustic.csv
       hash: md5
       md5: 0937f0fa9d7b83f87bb0aa8acae400e6
       size: 4842432
+  extract_neural_whisper:
+    cmd: python pipeline/extract_neural_whisper.py
+    deps:
+    - path: data/processed/corpus_parsed.csv
+      hash: md5
+      md5: 4a89859bbbb6590502650bf6d3721e27
+      size: 3024823
+    - path: pipeline/extract_neural_whisper.py
+      hash: md5
+      md5: 00ac23efbcc46b0ac75237bb52c1cb87
+      size: 2471
+    outs:
+    - path: data/processed/features_whisper.npz
+      hash: md5
+      md5: 5a5338421234f5c5b4ab0b91c45ac454
+      size: 375505412
+  extract_neural_xlsr:
+    cmd: python pipeline/extract_neural_xlsr.py
+    deps:
+    - path: data/processed/corpus_parsed.csv
+      hash: md5
+      md5: 4a89859bbbb6590502650bf6d3721e27
+      size: 3024823
+    - path: pipeline/extract_neural_xlsr.py
+      hash: md5
+      md5: adf44751111dbdcadce14f0ba9c01fb0
+      size: 2394
+    outs:
+    - path: data/processed/features_xlsr.npz
+      hash: md5
+      md5: fb421a1dc6c36450bddc925de612a1e5
+      size: 563258108

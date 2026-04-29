@@ -6,3 +6,27 @@ stages:
       - data/2
     outs:
       - data/processed/corpus_parsed.csv
+      
+  extract_acoustics:
+    cmd: python pipeline/extract_acoustics.py
+    deps:
+      - pipeline/extract_acoustics.py
+      - data/processed/corpus_parsed.csv
+    outs:
+      - data/processed/features_acoustic.csv
+
+  extract_neural_whisper:
+    cmd: python pipeline/extract_neural_whisper.py
+    deps:
+      - pipeline/extract_neural_whisper.py
+      - data/processed/corpus_parsed.csv
+    outs:
+      - data/processed/features_whisper.npz
+
+  extract_neural_xlsr:
+    cmd: python pipeline/extract_neural_xlsr.py
+    deps:
+      - pipeline/extract_neural_xlsr.py
+      - data/processed/corpus_parsed.csv
+    outs:
+      - data/processed/features_xlsr.npz
