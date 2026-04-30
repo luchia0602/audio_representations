@@ -42,3 +42,28 @@ stages:
       - data/processed/features_acoustic_norm.csv
       - data/processed/features_whisper_pca.npz
       - data/processed/features_xlsr_pca.npz
+
+  analyze_acoustics:
+    cmd: python pipeline/analyze_acoustics.py
+    deps:
+      - pipeline/analyze_acoustics.py
+      - data/processed/features_acoustic_norm.csv
+    outs:
+      - results/acoustic_summary_stats.csv
+      - results/vowel_chart_centroids.png
+      - results/boxplot_F1_norm.png
+      - results/boxplot_F2_norm.png
+
+  analyze_neural:
+    cmd: python pipeline/analyze_neural.py
+    deps:
+      - pipeline/analyze_neural.py
+      - data/processed/corpus_parsed.csv
+      - data/processed/features_whisper.npz
+      - data/processed/features_xlsr.npz
+    outs:
+      - results/neural_metrics_report.txt
+      - results/Whisper_PCA_phoneme_label.png
+      - results/Whisper_UMAP_phoneme_label.png
+      - results/XLS-R_PCA_phoneme_label.png
+      - results/XLS-R_UMAP_phoneme_label.png

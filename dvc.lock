@@ -82,8 +82,8 @@ stages:
       size: 563258108
     - path: pipeline/normalize.py
       hash: md5
-      md5: ada453b080ac7920839250ce8a04abb3
-      size: 2939
+      md5: e9805a4f8c547c93cf67194ec4fd7bcc
+      size: 1971
     outs:
     - path: data/processed/features_acoustic_norm.csv
       hash: md5
@@ -91,9 +91,77 @@ stages:
       size: 5721952
     - path: data/processed/features_whisper_pca.npz
       hash: md5
-      md5: b487472a8e46cc7ebb5fac668b6c8c9a
+      md5: 966e1b9ec4bbef8b7b5155e8b644f65e
       size: 18335716
     - path: data/processed/features_xlsr_pca.npz
       hash: md5
-      md5: ba8fe2997281463d9ef1b14f25cd12cc
+      md5: e9d9555d4a80ac1c1edbce6d16a52dd3
       size: 27503564
+  analyze_acoustics:
+    cmd: python pipeline/analyze_acoustics.py
+    deps:
+    - path: data/processed/features_acoustic_norm.csv
+      hash: md5
+      md5: 20cec366a032f479b2e2166f2d166027
+      size: 5721952
+    - path: pipeline/analyze_acoustics.py
+      hash: md5
+      md5: 4b42cd89f023b79e81715aa0210ba269
+      size: 3979
+    outs:
+    - path: results/acoustic_summary_stats.csv
+      hash: md5
+      md5: 415f274692fdfcf60b806b8c503bf836
+      size: 7471
+    - path: results/boxplot_F1_norm.png
+      hash: md5
+      md5: c7fbcf346fb13e150079dec019959b3c
+      size: 191033
+    - path: results/boxplot_F2_norm.png
+      hash: md5
+      md5: c2f0e9b80d573132dba933f6f5190f42
+      size: 232307
+    - path: results/vowel_chart_centroids.png
+      hash: md5
+      md5: 298d50ce5f9b382f7a714d0bdfaff0bc
+      size: 144610
+  analyze_neural:
+    cmd: python pipeline/analyze_neural.py
+    deps:
+    - path: data/processed/corpus_parsed.csv
+      hash: md5
+      md5: 4a89859bbbb6590502650bf6d3721e27
+      size: 3024823
+    - path: data/processed/features_whisper.npz
+      hash: md5
+      md5: 5a5338421234f5c5b4ab0b91c45ac454
+      size: 375505412
+    - path: data/processed/features_xlsr.npz
+      hash: md5
+      md5: fb421a1dc6c36450bddc925de612a1e5
+      size: 563258108
+    - path: pipeline/analyze_neural.py
+      hash: md5
+      md5: e8efaf4587118e7565d1cfaacd749742
+      size: 5518
+    outs:
+    - path: results/Whisper_PCA_phoneme_label.png
+      hash: md5
+      md5: cd409cf8cdd692c7f47169717b060c35
+      size: 1647112
+    - path: results/Whisper_UMAP_phoneme_label.png
+      hash: md5
+      md5: 6df78fbee7ea492b0273f067ed3baabf
+      size: 511080
+    - path: results/XLS-R_PCA_phoneme_label.png
+      hash: md5
+      md5: 1cbf218c25fc2a4dbaea739d6dcdbed9
+      size: 2104242
+    - path: results/XLS-R_UMAP_phoneme_label.png
+      hash: md5
+      md5: ea4baea2a705ba96092a3d8c4f50bba7
+      size: 445909
+    - path: results/neural_metrics_report.txt
+      hash: md5
+      md5: 74bbbcfbc42362236a27a080139c2dab
+      size: 436
