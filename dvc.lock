@@ -65,3 +65,35 @@ stages:
       hash: md5
       md5: fb421a1dc6c36450bddc925de612a1e5
       size: 563258108
+  normalize:
+    cmd: python pipeline/normalize.py
+    deps:
+    - path: data/processed/features_acoustic.csv
+      hash: md5
+      md5: 0937f0fa9d7b83f87bb0aa8acae400e6
+      size: 4842432
+    - path: data/processed/features_whisper.npz
+      hash: md5
+      md5: 5a5338421234f5c5b4ab0b91c45ac454
+      size: 375505412
+    - path: data/processed/features_xlsr.npz
+      hash: md5
+      md5: fb421a1dc6c36450bddc925de612a1e5
+      size: 563258108
+    - path: pipeline/normalize.py
+      hash: md5
+      md5: ada453b080ac7920839250ce8a04abb3
+      size: 2939
+    outs:
+    - path: data/processed/features_acoustic_norm.csv
+      hash: md5
+      md5: 20cec366a032f479b2e2166f2d166027
+      size: 5721952
+    - path: data/processed/features_whisper_pca.npz
+      hash: md5
+      md5: b487472a8e46cc7ebb5fac668b6c8c9a
+      size: 18335716
+    - path: data/processed/features_xlsr_pca.npz
+      hash: md5
+      md5: ba8fe2997281463d9ef1b14f25cd12cc
+      size: 27503564

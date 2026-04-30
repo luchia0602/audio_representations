@@ -30,3 +30,15 @@ stages:
       - data/processed/corpus_parsed.csv
     outs:
       - data/processed/features_xlsr.npz
+
+  normalize:
+    cmd: python pipeline/normalize.py
+    deps:
+      - pipeline/normalize.py
+      - data/processed/features_acoustic.csv
+      - data/processed/features_whisper.npz
+      - data/processed/features_xlsr.npz
+    outs:
+      - data/processed/features_acoustic_norm.csv
+      - data/processed/features_whisper_pca.npz
+      - data/processed/features_xlsr_pca.npz
